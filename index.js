@@ -3,12 +3,12 @@ const logger = require('fluent-logger');
 const CircularJSON = require('circular-json');
 const HTTP = require('http');
 const Telebot = require('telebot');
-const configTelebot = require('../config/telegram');
+const configTelebot = require('./config/telegram');
 const Raven = require('raven')
 const winston  = require('winston');
 const { Loggly } = require('winston-loggly-bulk');
 
-const { keyDictionary } = require('../config/ctx')
+const { keyDictionary } = require('./config/ctx')
 
 let bot;
 
@@ -221,6 +221,8 @@ function send (level, data = {}, req, res) { // eslint-disable-line
   } else {
     data.level = level
   }
+
+  data.NODE_ENV = process.env.NODE_ENV
 
   // Изменение порядка свойств объекта. Немного костыль.
   const newData = {};
