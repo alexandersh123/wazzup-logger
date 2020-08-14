@@ -1,0 +1,32 @@
+{
+  "name": "wazzup-logger",
+  "version": "0.0.25",
+  "description": "Wazzup logger",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint ./src",
+    "test": "cross-env NODE_ENV=test_logger mocha --exit test/"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "keywords": [
+    "log"
+  ],
+  "author": "WAZZUP",
+  "license": "ISC",
+  "dependencies": {
+    "circular-json": "^0.5.9",
+    "fluent-logger": "^3.3.1",
+    "raven": "^2.6.4",
+    "request": "^2.88.0",
+    "telebot": "^1.2.6",
+    "winston-loggly-bulk": "^3.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "mocha": "^6.2.0",
+    "pre-commit": "^1.2.2"
+  }
+}
