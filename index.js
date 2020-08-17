@@ -247,7 +247,7 @@ function send (level, data = {}, req, res) { // eslint-disable-line
   logging.emit('', logData);
 
   if (config.sentry && config.sentry.url && Array.isArray(config.sentry.levels) && config.sentry.levels.includes(logData.level)) {
-    let errMessage = logData.message || logData.error.description || 'Unknown error'
+    let errMessage = logData.message || (logData.error && logData.error.description) || 'Unknown error'
     let err = logData.level === 'warning' ? new Warning(errMessage) : new Error(errMessage)
     Raven.captureException(err, { extra: logData, level: logData.level })
   }
